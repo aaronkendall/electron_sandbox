@@ -8,6 +8,18 @@ html
     link(rel="stylesheet" href="./styles.css")
 
   body
-    h1 Hello World
+    .container
+
+      .jumbo
+        .title
+          img(src="./assets/pokemon.png" width="40%")
+
+        .search
+          input(placeholder="Pikachu" class="search-bar")
+          .search-info
+            p You can search by Pokemon name, type, move, location, game and more!
+
+      .result-cards
+        ul.items
 
   script(src="./index.js")

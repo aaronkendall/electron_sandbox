@@ -4,7 +4,8 @@ const app = window.app = {};
 app.controllers = {};
 
 app.config = {
-    "name": "PokeDex"
+    "name": "PokeDex",
+    "baseUrl": "http://pokeapi.co/api/v2/"
 };
 
 ctrls.forEach(ctrl => {

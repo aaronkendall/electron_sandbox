@@ -1,3 +1,5 @@
+import Pokedex from '../class/Pokedex';
+
 export function init(app) {
-    console.log(app.config.name);
+    new Pokedex(app);
 };

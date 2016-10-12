@@ -1,0 +1,48 @@
+body {
+    background-color: #fff;
+    font-family: Helvetica;
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+}
+
+.jumbo {
+    background-color: #f9f9f9;
+    height: 400px;
+    position: relative;
+}
+
+.title {
+    text-align: center;
+    position: relative;
+    top: 40px;
+}
+
+.search {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.search-bar {
+    width: 50%;
+    height: 45px;
+    margin: 0 auto;
+    font-size: 20px;
+    display: block;
+    padding-left: 15px;
+}
+
+.search-info {
+    text-align: center;
+}
+
+.result-cards {
+
+}
+
+.items {
+
+}
