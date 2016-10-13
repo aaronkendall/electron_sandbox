@@ -1,6 +1,10 @@
 (function () {
 'use strict';
 
+function renderPokemonCard(pokemon) {
+    return "<div class='card-item'>" + "<img src=" + pokemon.image + "'width=64px' height='64px' />" + "<span class='card-item-title'>" + pokemon.name + "</span>" + "<p class='card-item-subtitle'>" + pokemon.type + "</p>" + "</div>";
+}
+
 var asyncGenerator = function () {
   function AwaitValue(value) {
     this.value = value;
@@ -124,7 +128,23 @@ var classCallCheck = function (instance, Constructor) {
   }
 };
 
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
 
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
 
 
 
@@ -195,11 +215,23 @@ var set = function set(object, property, value, receiver) {
   return value;
 };
 
-var Pokedex = function Pokedex(app) {
-    classCallCheck(this, Pokedex);
+var Pokedex = function () {
+    function Pokedex(app) {
+        classCallCheck(this, Pokedex);
 
-    console.log("Hello World", app.config.baseUrl);
-};
+        console.log("Hello World", app.config.baseUrl, renderPokemonCard({}));
+        this.pageCount = 1;
+        this.pageCount = this.pageCount.bind(this);
+    }
+
+    createClass(Pokedex, [{
+        key: "loadPokemon",
+        value: function loadPokemon() {
+            this.pageCount++;
+        }
+    }]);
+    return Pokedex;
+}();
 
 function init(app) {
     new Pokedex(app);

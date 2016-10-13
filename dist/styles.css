@@ -31,3 +31,11 @@ body {
 
 .search-info {
   text-align: center; }
+
+.main-content {
+  width: 100%;
+  margin: 25px 0 25px 0; }
+
+.card-item {
+  min-width: 150px;
+  height: 250px; }
