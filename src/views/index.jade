@@ -6,20 +6,25 @@ html
     title Pokedex
 
     link(rel="stylesheet" href="./styles.css")
+    script(src="https://use.fontawesome.com/cffe1f5b61.js")
 
   body
     .container
 
       .jumbo
-        .title
+        .logo
           img(src="./assets/pokemon.png" width="40%")
 
-        .search
-          input(placeholder="Pikachu" class="search-bar")
+        .search-content
+          .search
+            input(placeholder="Pikachu" class="search-bar")
+            button(class="search-button")
+              i.fa.fa-search
           .search-info
             p You can search by Pokemon name, type, move, location, game and more!
 
       .main-content
-        ul.items
+        .title
+          h3 Pokemon
 
   script(src="./index.js")

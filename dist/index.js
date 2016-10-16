@@ -221,13 +221,17 @@ var Pokedex = function () {
 
         console.log("Hello World", app.config.baseUrl, renderPokemonCard({}));
         this.pageCount = 1;
-        this.pageCount = this.pageCount.bind(this);
+        this.loadPokemon = this.loadPokemon.bind(this);
+
+        var button = document.getElementsByClassName('search-button');
+        button[0].addEventListener('click', this.loadPokemon);
     }
 
     createClass(Pokedex, [{
-        key: "loadPokemon",
+        key: 'loadPokemon',
         value: function loadPokemon() {
             this.pageCount++;
+            console.log(this.pageCount);
         }
     }]);
     return Pokedex;

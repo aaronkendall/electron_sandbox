@@ -4,35 +4,53 @@ body {
     margin: 0;
 }
 
+p {
+    font-weight: lighter;
+}
+
 .container {
     width: 100%;
 }
 
 .jumbo {
-    background-color: #f9f9f9;
-    height: 400px;
+    background-image:
+      linear-gradient(#dfdbed, #d1d9ee, #a5d2ec, #75cbea, #50a0d6);
+    height: 450px;
     position: relative;
 }
 
-.title {
+.logo {
     text-align: center;
     position: relative;
     top: 40px;
 }
 
-.search {
+.search-content {
     position: absolute;
     bottom: 0;
     width: 100%;
 }
 
-.search-bar {
-    width: 50%;
-    height: 45px;
-    margin: 0 auto;
-    font-size: 20px;
-    display: block;
-    padding-left: 15px;
+.search {
+  width: 100%;
+  text-align: center;
+
+  .search-bar {
+      width: 50%;
+      height: 45px;
+      font-size: 20px;
+      padding-left: 15px;
+      border-width: 0px;
+  }
+
+  .search-button {
+      background-color: #5AEED1;
+      color: #fff;
+      font-size: 22px;
+      border-width: 0px;
+      height: 47px;
+      width: 50px;
+  }
 }
 
 .search-info {
@@ -47,4 +65,31 @@ body {
 .card-item {
     min-width: 150px;
     height: 250px;
+}
+
+.title {
+    text-align: center;
+    h3 {
+        position: relative;
+        font-weight: lighter;
+        font-size: 28px;
+        display: inline-block;
+        border: 2px solid;
+        padding: 10px;
+    }
+
+    h3:before, h3:after {
+        position: absolute;
+        top: 51%;
+        overflow: hidden;
+        width: 200%;
+        height: 1px;
+        content: '\a0';
+        background-color: #000;
+        margin-left: 10px;
+    }
+    h3:before {
+        margin-left: -208%;
+        text-align: right;
+    }
 }
