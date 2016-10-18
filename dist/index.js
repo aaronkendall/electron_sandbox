@@ -5,6 +5,12 @@ function renderPokemonCard(pokemon) {
     return "<div class='card-item'>" + "<img src=" + pokemon.image + "'width=64px' height='64px' />" + "<span class='card-item-title'>" + pokemon.name + "</span>" + "<p class='card-item-subtitle'>" + pokemon.type + "</p>" + "</div>";
 }
 
+
+
+function setContentTitle(title) {
+    document.getElementById('content-title').innerText = title;
+}
+
 var asyncGenerator = function () {
   function AwaitValue(value) {
     this.value = value;
@@ -219,12 +225,13 @@ var Pokedex = function () {
     function Pokedex(app) {
         classCallCheck(this, Pokedex);
 
-        console.log("Hello World", app.config.baseUrl, renderPokemonCard({}));
+        console.log("Hello World", app.config.title, renderPokemonCard({}));
         this.pageCount = 1;
         this.loadPokemon = this.loadPokemon.bind(this);
 
         var button = document.getElementsByClassName('search-button');
         button[0].addEventListener('click', this.loadPokemon);
+        setContentTitle(app.config.title);
     }
 
     createClass(Pokedex, [{
@@ -248,7 +255,8 @@ app.controllers = {};
 
 app.config = {
     "name": "PokeDex",
-    "baseUrl": "http://pokeapi.co/api/v2/"
+    "baseUrl": "http://pokeapi.co/api/v2/",
+    "title": "Pokemon"
 };
 
 ctrls.forEach(function (ctrl) {

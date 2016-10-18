@@ -5,7 +5,8 @@ app.controllers = {};
 
 app.config = {
     "name": "PokeDex",
-    "baseUrl": "http://pokeapi.co/api/v2/"
+    "baseUrl": "http://pokeapi.co/api/v2/",
+    "title": "Pokemon"
 };
 
 ctrls.forEach(ctrl => {

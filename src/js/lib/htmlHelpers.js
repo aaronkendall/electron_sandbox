@@ -11,7 +11,12 @@ function renderPokemonCard(pokemon) {
 function renderSelectedPokemon(pokemon) {
 };
 
+function setContentTitle(title) {
+    document.getElementById('content-title').innerText = title;
+};
+
 export {
     renderPokemonCard,
-    renderSelectedPokemon
+    renderSelectedPokemon,
+    setContentTitle
 };
