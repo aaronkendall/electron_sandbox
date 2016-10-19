@@ -21,7 +21,7 @@ function buildJS() {
 }
 
 function buildCSS() {
-    return gulp.src('./src/styles/*.scss')
+    return gulp.src('./src/styles/styles.scss')
         .pipe(sass())
         .pipe(gulp.dest('./dist'));
 }
@@ -42,5 +42,5 @@ gulp.task('default', ['build']);
 gulp.task('watch', function() {
     gulp.watch('./src/js/**/*.js', ['js']);
     gulp.watch('./src/views/*.jade', ['html']);
-    gulp.watch('./src/styles/*.scss', ['css']);
+    gulp.watch('./src/styles/**/*.scss', ['css']);
 });

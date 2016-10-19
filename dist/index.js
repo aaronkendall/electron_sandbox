@@ -1,8 +1,12 @@
 (function () {
 'use strict';
 
+function capitalise(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1, string.length);
+}
+
 function renderPokemonCard(pokemon) {
-    return "<div class='card-item'>" + "<img src=" + pokemon.image + "'width=64px' height='64px' />" + "<span class='card-item-title'>" + pokemon.name + "</span>" + "<p class='card-item-subtitle'>" + pokemon.type + "</p>" + "</div>";
+    return '<div class="card-item">\n            <img src="' + pokemon.image + '" width="64px" height="64px" />\n            <span class="card-item-title">' + capitalise(pokemon.name) + '</span>\n            <p class="card-item-subtitle">' + pokemon.type + '</p>\n        </div>';
 }
 
 
@@ -221,24 +225,46 @@ var set = function set(object, property, value, receiver) {
   return value;
 };
 
+// Namespace shit
 var Pokedex = function () {
     function Pokedex(app) {
         classCallCheck(this, Pokedex);
 
-        console.log("Hello World", app.config.title, renderPokemonCard({}));
         this.pageCount = 1;
-        this.loadPokemon = this.loadPokemon.bind(this);
+        this.increasePageCount = this.increasePageCount.bind(this);
 
-        var button = document.getElementsByClassName('search-button');
-        button[0].addEventListener('click', this.loadPokemon);
+        var button = document.querySelector('.search-button');
+        button.addEventListener('click', this.requestPokemon.bind(this));
         setContentTitle(app.config.title);
     }
 
     createClass(Pokedex, [{
-        key: 'loadPokemon',
-        value: function loadPokemon() {
+        key: 'insertPokemonToHtml',
+        value: function insertPokemonToHtml(e) {
+            var results = JSON.parse(e.currentTarget.response);
+            var html = '';
+            results.results.forEach(function (pokemon) {
+                console.log(renderPokemonCard(pokemon));
+                html += renderPokemonCard(pokemon);
+            });
+            document.querySelector('#results').innerHTML = html;
+        }
+    }, {
+        key: 'increasePageCount',
+        value: function increasePageCount() {
             this.pageCount++;
-            console.log(this.pageCount);
+        }
+    }, {
+        key: 'requestPokemon',
+        value: function requestPokemon() {
+            var _this = this;
+
+            var req = new XMLHttpRequest();
+            req.addEventListener('load', function (e) {
+                return _this.insertPokemonToHtml(e);
+            });
+            req.open("GET", app.config.baseUrl + 'pokemon');
+            req.send();
         }
     }]);
     return Pokedex;
@@ -250,18 +276,18 @@ function init(app) {
 
 var ctrls = [init];
 
-var app = window.app = {};
-app.controllers = {};
+var app$1 = window.app = {};
+app$1.controllers = {};
 
-app.config = {
+app$1.config = {
     "name": "PokeDex",
     "baseUrl": "http://pokeapi.co/api/v2/",
     "title": "Pokemon"
 };
 
 ctrls.forEach(function (ctrl) {
-    app.controllers[ctrl.name] = ctrl;
-    app.controllers[ctrl.name](app);
+    app$1.controllers[ctrl.name] = ctrl;
+    app$1.controllers[ctrl.name](app$1);
 });
 
 }());

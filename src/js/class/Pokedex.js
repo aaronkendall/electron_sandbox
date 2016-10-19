@@ -1,3 +1,4 @@
+// Namespace shit
 import {
     renderPokemonCard,
     renderSelectedPokemon,
@@ -6,17 +7,31 @@ import {
 
 export default class Pokedex {
     constructor(app) {
-        console.log(renderPokemonCard({}));
         this.pageCount = 1;
-        this.loadPokemon = this.loadPokemon.bind(this);
+        this.increasePageCount = this.increasePageCount.bind(this);
 
-        const button = document.getElementsByClassName('search-button');
-        button[0].addEventListener('click', this.loadPokemon);
+        const button = document.querySelector('.search-button');
+        button.addEventListener('click', this.requestPokemon.bind(this));
         setContentTitle(app.config.title);
     };
 
-    loadPokemon() {
+    insertPokemonToHtml(e) {
+        const results = JSON.parse(e.currentTarget.response);
+        let html = '';
+        results.results.forEach((pokemon) => {
+            html += renderPokemonCard(pokemon);
+        });
+        document.querySelector('#results').innerHTML = html;
+    };
+
+    increasePageCount() {
         this.pageCount++;
-        console.log(this.pageCount);
+    };
+
+    requestPokemon() {
+        const req = new XMLHttpRequest();
+        req.addEventListener('load', (e) => this.insertPokemonToHtml(e));
+        req.open("GET", app.config.baseUrl + 'pokemon');
+        req.send();
     };
 };
