@@ -1,0 +1,31 @@
+.search-content {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.search {
+  width: 100%;
+  text-align: center;
+
+  .search-bar {
+      width: 50%;
+      height: 45px;
+      font-size: 20px;
+      padding-left: 15px;
+      border-width: 0px;
+  }
+
+  .search-button {
+      background-color: #5AEED1;
+      color: #fff;
+      font-size: 22px;
+      border-width: 0px;
+      height: 47px;
+      width: 50px;
+  }
+}
+
+.search-info {
+    text-align: center;
+}

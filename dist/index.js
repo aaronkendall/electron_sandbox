@@ -1,19 +1,46 @@
 (function () {
 'use strict';
 
-function capitalise(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1, string.length);
-}
+var htmlHelpers = {
+    capitalise: function capitalise(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1, string.length);
+    },
 
-function renderPokemonCard(pokemon) {
-    return '<div class="card-item">\n            <img src="' + pokemon.image + '" width="64px" height="64px" />\n            <span class="card-item-title">' + capitalise(pokemon.name) + '</span>\n            <p class="card-item-subtitle">' + pokemon.type + '</p>\n        </div>';
-}
+    renderPokemonCard: function renderPokemonCard(pokemon) {
+        return '<div class="card-item">\n                <img src="./assets/charmander.png" width="64px" height="64px" class="card-item-image" />\n                <span class="card-item-title">' + this.capitalise(pokemon.name) + '</span>\n                <p class="card-item-subtitle">' + pokemon.type + '</p>\n            </div>';
+    },
 
+    renderSelectedPokemon: function renderSelectedPokemon(pokemon) {},
 
+    setContentTitle: function setContentTitle(title) {
+        document.getElementById('content-title').innerText = title;
+    }
+};
 
-function setContentTitle(title) {
-    document.getElementById('content-title').innerText = title;
-}
+var request = {
+    get: function get(url) {
+        var request = new Promise(function (resolve, reject) {
+            var req = new XMLHttpRequest();
+
+            req.open("GET", url);
+            req.send();
+
+            req.onload = function () {
+                if (this.status >= 200 && this.status < 300) {
+                    resolve(this.response);
+                } else {
+                    reject(this.statusText);
+                }
+            };
+
+            req.onerror = function () {
+                reject(this.statusText);
+            };
+        });
+
+        return request;
+    }
+};
 
 var asyncGenerator = function () {
   function AwaitValue(value) {
@@ -162,7 +189,7 @@ var createClass = function () {
 
 
 
-var get = function get(object, property, receiver) {
+var get$1 = function get$1(object, property, receiver) {
   if (object === null) object = Function.prototype;
   var desc = Object.getOwnPropertyDescriptor(object, property);
 
@@ -172,7 +199,7 @@ var get = function get(object, property, receiver) {
     if (parent === null) {
       return undefined;
     } else {
-      return get(parent, property, receiver);
+      return get$1(parent, property, receiver);
     }
   } else if ("value" in desc) {
     return desc.value;
@@ -225,27 +252,22 @@ var set = function set(object, property, value, receiver) {
   return value;
 };
 
-// Namespace shit
-var Pokedex = function () {
-    function Pokedex(app) {
-        classCallCheck(this, Pokedex);
+var Pokemon = function () {
+    function Pokemon(app) {
+        classCallCheck(this, Pokemon);
 
         this.pageCount = 1;
-        this.increasePageCount = this.increasePageCount.bind(this);
 
-        var button = document.querySelector('.search-button');
-        button.addEventListener('click', this.requestPokemon.bind(this));
-        setContentTitle(app.config.title);
+        this.requestPokemon();
+        htmlHelpers.setContentTitle(app.config.title);
     }
 
-    createClass(Pokedex, [{
+    createClass(Pokemon, [{
         key: 'insertPokemonToHtml',
-        value: function insertPokemonToHtml(e) {
-            var results = JSON.parse(e.currentTarget.response);
+        value: function insertPokemonToHtml(data) {
             var html = '';
-            results.results.forEach(function (pokemon) {
-                console.log(renderPokemonCard(pokemon));
-                html += renderPokemonCard(pokemon);
+            data.results.forEach(function (pokemon) {
+                html += htmlHelpers.renderPokemonCard(pokemon);
             });
             document.querySelector('#results').innerHTML = html;
         }
@@ -256,19 +278,40 @@ var Pokedex = function () {
         }
     }, {
         key: 'requestPokemon',
+
+
+        // async requestPokemon() {
+        //     try {
+        //         let url = app.config.baseUrl + 'pokemon';
+        //         let response = await request.get(url);
+        //         insertPokemonToHtml(JSON.parse(response));
+        //     }
+        //     catch (rejection) {
+        //         console.log("request failed lol" + rejection);
+        //     }
+        // };
+
         value: function requestPokemon() {
             var _this = this;
 
-            var req = new XMLHttpRequest();
-            req.addEventListener('load', function (e) {
-                return _this.insertPokemonToHtml(e);
+            var url = app.config.baseUrl + 'pokemon';
+            request.get(url).then(function (response) {
+                _this.insertPokemonToHtml(JSON.parse(response));
+                _this.increasePageCount();
+            }).catch(function (error) {
+                console.log("request failed", error);
             });
-            req.open("GET", app.config.baseUrl + 'pokemon');
-            req.send();
         }
     }]);
-    return Pokedex;
+    return Pokemon;
 }();
+
+var Pokedex = function Pokedex(app) {
+    classCallCheck(this, Pokedex);
+
+    new Pokemon(app);
+    new Menu(app);
+};
 
 function init(app) {
     new Pokedex(app);

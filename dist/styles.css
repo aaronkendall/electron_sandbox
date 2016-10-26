@@ -1,28 +1,21 @@
-.card-item {
-  width: 150px;
-  height: 250px;
-  padding: 0 15px 0 15px; }
-
-body {
-  background-color: #fff;
-  font-family: Helvetica;
-  margin: 0; }
-
-p {
-  font-weight: lighter; }
-
-.container {
-  width: 100%; }
-
-.jumbo {
-  background-image: linear-gradient(#dfdbed, #d1d9ee, #a5d2ec, #75cbea, #50a0d6);
-  height: 450px;
-  position: relative; }
-
-.logo {
-  text-align: center;
-  position: relative;
-  top: 40px; }
+.cards {
+  width: 100%;
+  text-align: center; }
+  .cards .card-item {
+    box-shadow: 5px 5px 20px #888888;
+    width: 20%;
+    height: 250px;
+    margin: 0 20px 30px 20px;
+    display: inline-block; }
+  .cards .card-item-title {
+    font-size: 22px;
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.6);
+    float: left;
+    margin-top: 30px;
+    padding: 5px 5px 5px 15px;
+    color: #fff;
+    font-weight: lighter; }
 
 .search-content {
   position: absolute;
@@ -49,10 +42,6 @@ p {
 .search-info {
   text-align: center; }
 
-.main-content {
-  width: 100%;
-  margin: 25px 0 25px 0; }
-
 .title {
   text-align: center;
   margin-bottom: 20px; }
@@ -75,3 +64,27 @@ p {
   .title h3:before {
     margin-left: -208%;
     text-align: right; }
+
+.container {
+  width: 100%; }
+
+.main-content {
+  width: 100%;
+  margin: 25px 0 25px 0; }
+
+.jumbo {
+  background-image: linear-gradient(#dfdbed, #d1d9ee, #a5d2ec, #75cbea, #50a0d6);
+  height: 450px;
+  position: relative; }
+
+body {
+  background-color: #fff;
+  font-family: Helvetica; }
+
+p {
+  font-weight: lighter; }
+
+.logo {
+  text-align: center;
+  position: relative;
+  top: 40px; }
