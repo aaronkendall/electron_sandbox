@@ -306,6 +306,10 @@ var Pokemon = function () {
     return Pokemon;
 }();
 
+var Menu = function Menu(app) {
+    classCallCheck(this, Menu);
+};
+
 var Pokedex = function Pokedex(app) {
     classCallCheck(this, Pokedex);
 

@@ -1,0 +1,26 @@
+.menu {
+    left: 0px;
+    top: 0px;
+    position: fixed;
+    width: 250px;
+    background-color: black;
+    height: 100vh;
+    z-index: 2;
+    transform: translateX(-250px);
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.menu::after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 30px;
+    position: relative;
+    top: 10%;
+    left: 100%;
+    background-color: black;
+}
+
+.menu:hover {
+    transform: translateX(0px);
+}
