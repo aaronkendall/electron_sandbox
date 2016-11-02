@@ -1,13 +1,50 @@
 .cards {
   width: 100%;
   text-align: center; }
+  .cards .fire {
+    background-image: linear-gradient(#F8D5D0, #FD8A54, #F7745A); }
+  .cards .grass {
+    background-image: linear-gradient(#F8D5D0, #FD8A54, #F7745A); }
+  .cards .water {
+    background-image: linear-gradient(#F8D5D0, #FD8A54, #F7745A); }
+  .cards .electric {
+    background-image: linear-gradient(#F8D5D0, #FD8A54, #F7745A); }
+  .cards .ground {
+    background-image: linear-gradient(#F8D5D0, #FD8A54, #F7745A); }
+  .cards .rock {
+    background-image: linear-gradient(#F8D5D0, #FD8A54, #F7745A); }
+  .cards .bug {
+    background-image: linear-gradient(#F8D5D0, #FD8A54, #F7745A); }
+  .cards .psychic {
+    background-image: linear-gradient(#F8D5D0, #FD8A54, #F7745A); }
+  .cards .normal {
+    background-image: linear-gradient(#F8D5D0, #FD8A54, #F7745A); }
+  .cards .fighting {
+    background-image: linear-gradient(#F8D5D0, #FD8A54, #F7745A); }
+  .cards .flying {
+    background-image: linear-gradient(#F8D5D0, #FD8A54, #F7745A); }
+  .cards .poison {
+    background-image: linear-gradient(#F8D5D0, #FD8A54, #F7745A); }
+  .cards .ghost {
+    background-image: linear-gradient(#F8D5D0, #FD8A54, #F7745A); }
+  .cards .steel {
+    background-image: linear-gradient(#F8D5D0, #FD8A54, #F7745A); }
+  .cards .ice {
+    background-image: linear-gradient(#F8D5D0, #FD8A54, #F7745A); }
+  .cards .dragon {
+    background-image: linear-gradient(#F8D5D0, #FD8A54, #F7745A); }
+  .cards .dark {
+    background-image: linear-gradient(#F8D5D0, #FD8A54, #F7745A); }
+  .cards .fairy {
+    background-image: linear-gradient(#F8D5D0, #FD8A54, #F7745A); }
+  .cards .shadow {
+    background-image: linear-gradient(#F8D5D0, #FD8A54, #F7745A); }
   .cards .card-item {
     box-shadow: 0px 0px 10px #888888;
     width: 20%;
     height: 250px;
     margin: 0 20px 30px 20px;
     display: inline-block;
-    background-image: linear-gradient(#F8D5D0, #FD8A54, #F7745A);
     transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
     position: relative; }
   .cards .card-item:hover {

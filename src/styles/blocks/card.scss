@@ -1,4 +1,6 @@
 .cards {
+  @import './type';
+
   width: 100%;
   text-align: center;
 
@@ -8,8 +10,6 @@
       height: 250px;
       margin: 0 20px 30px 20px;
       display: inline-block;
-      background-image:
-          linear-gradient(#F8D5D0, #FD8A54, #F7745A);
       transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
       position: relative;
   }
