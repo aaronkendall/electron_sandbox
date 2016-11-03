@@ -48,7 +48,7 @@
     transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
     position: relative; }
   .cards .card-item:hover {
-    transform: scale(1.05) rotateX(50deg); }
+    transform: scale(1.05); }
   .cards .card-item::after {
     content: '';
     position: absolute;
@@ -64,12 +64,14 @@
     opacity: 1; }
   .cards .card-item-image {
     display: block;
-    margin: 40px auto; }
+    margin: 40px auto;
+    height: 90px;
+    width: 90px; }
   .cards .card-item-title {
     font-size: 22px;
     background-color: rgba(0, 0, 0, 0.6);
     float: left;
-    margin-top: 30px;
+    margin-top: 10px;
     padding: 5px 15px 5px 15px;
     color: #fff;
     font-style: italic;

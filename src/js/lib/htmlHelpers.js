@@ -6,9 +6,9 @@ const htmlHelpers = {
     },
 
     renderPokemonCard: function(pokemon) {
-        const type = typeLookup[pokemon.name];
+        const type = typeLookup[pokemon.name].type;
         return `<div class="card-item ${type}">
-                <img src="./assets/pokemon/${pokemon.name}.png" width="64px" height="64px" class="card-item-image" />
+                <img src="./assets/pokemon/${pokemon.name}.png" class="card-item-image" />
                 <span class="card-item-title">${this.capitalise(pokemon.name)}</span>
                 <p class="card-item-subtitle">${type}</p>
             </div>`;
