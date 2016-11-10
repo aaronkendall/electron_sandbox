@@ -309,9 +309,45 @@ var Pokemon = function () {
     return Pokemon;
 }();
 
-var Menu = function Menu(app) {
-    classCallCheck(this, Menu);
-};
+var Menu = function () {
+    function Menu(app) {
+        classCallCheck(this, Menu);
+
+        this.topLevelMenu = document.querySelector(".js-top-level-menu");
+        this.subMenu = document.querySelector(".js-submenu");
+        this.openSubMenuIcon = document.querySelector(".js-menu-open");
+        this.closeSubMenuIcon = document.querySelector(".js-menu-close");
+
+        this._setUpHandlers();
+    }
+
+    createClass(Menu, [{
+        key: "openSubMenu",
+        value: function openSubMenu() {
+            this.topLevelMenu.classList.add("close-menu");
+            this.subMenu.classList.add("open-menu");
+        }
+    }, {
+        key: "closeSubMenu",
+        value: function closeSubMenu() {
+            this.topLevelMenu.classList.remove("close-menu");
+            this.subMenu.classList.remove("open-menu");
+        }
+    }, {
+        key: "_setUpHandlers",
+        value: function _setUpHandlers() {
+            var _this = this;
+
+            this.openSubMenuIcon.addEventListener('click', function () {
+                return _this.openSubMenu();
+            });
+            this.closeSubMenuIcon.addEventListener('click', function () {
+                return _this.closeSubMenu();
+            });
+        }
+    }]);
+    return Menu;
+}();
 
 var Pokedex = function Pokedex(app) {
     classCallCheck(this, Pokedex);

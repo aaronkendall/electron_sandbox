@@ -38,10 +38,7 @@
     top: 0;
     left: 0;
     position: absolute;
-}
-
-.menu-list-submenu {
-    transform: translateX(-250px);
+    transition: transform 0.5s, opacity 0.5s;
 }
 
 .menu-list-item {
@@ -65,5 +62,23 @@
 }
 
 .submenu-icon {
-    color: #fff;
+    display:block;
+    position:absolute;
+    width:10px;
+    height:10px;
+    top:50%;
+    right:6%;
+    background-color:white;
+    transform: translate(-50%,-50%);
+    z-index: 2;
+}
+
+.close-menu {
+    transform: translateX(-250px);
+    opacity: 0;
+}
+
+.open-menu {
+    transform: translateX(0px);
+    opacity: 1;
 }

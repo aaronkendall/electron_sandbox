@@ -12,7 +12,7 @@ html
   body
     .menu-container
       .menu
-        ul.menu-list.menu-list-submenu
+        ul.menu-list.close-menu.js-submenu
           li.menu-list-item.menu-list-item-quarters
             a(href="#").menu-link Types
           li.menu-list-item.menu-list-item-quarters
@@ -22,16 +22,16 @@ html
           li.menu-list-item.menu-list-item-quarters
             a(href="#").menu-link Growth
 
-        ul.menu-list
+        ul.menu-list.js-top-level-menu
           li.menu-list-item.menu-list-item-fifths
             a(href="#").menu-link Berries
           li.menu-list-item.menu-list-item-fifths
             a(href="#").menu-link Games
           li.menu-list-item.menu-list-item-fifths
             a(href="#").menu-link Machines
-          li.menu-list-item.menu-list-item-fifths
+          li.menu-list-item.menu-list-item-fifths(style="position:relative")
             a(href="#").menu-link Pokemon
-            i.fa.fa-search.submenu-icon
+            span(class="submenu-icon js-menu-open")
           li.menu-list-item.menu-list-item-fifths
             a(href="#").menu-link Moves
 
